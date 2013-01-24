@@ -1,0 +1,29 @@
+easyblock = "PythonPackage"
+
+name = 'psutil'
+version = '0.6.1'
+
+homepage = 'http://code.google.com/p/psutil/'
+description = """A cross-platform process and system utilities module for Python"""
+
+toolchain = {'name': 'goalf', 'version': '1.1.0-no-OFED'}
+
+source_urls = ["http://psutil.googlecode.com/files/"]
+sources = ['%s-%s.tar.gz' % (name.lower(), version)]
+
+python = 'Python'
+pythonversion = '2.7.3'
+pythonshortversion = ".".join(pythonversion.split(".")[:-1])
+versionsuffix = '-%s-%s' % (python, pythonversion)
+
+dependencies = [(python, pythonversion)]
+
+sanity_check_paths = {
+                      'files': [('lib/python%(pyv)s/site-packages/'
+                                 'psutil-%(version)s-py%(pyv)s-linux-x86_64.egg') %
+                                  {'pyv': pythonshortversion,
+                                   'version': version }
+                               ],
+                      'dirs': [],
+                     }
+
